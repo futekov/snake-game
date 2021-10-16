@@ -15,7 +15,7 @@ class GameObject {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.rotate(this.angle);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'yellow';
     ctx.fillRect(0, 0, this.width, this.height);
     ctx.restore();
   }

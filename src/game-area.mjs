@@ -16,8 +16,8 @@ class GameArea {
     
     canvas.width = 1920;
     canvas.height = 1080;
-    canvas.style.backgroundColor = '#fff';
-    canvas.backgroundColor = '#fff';
+    canvas.style.backgroundColor = '#000';
+    canvas.backgroundColor = '#000';
 
     document.body.append(canvas);
 

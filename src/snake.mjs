@@ -11,6 +11,20 @@ class Snake extends GameObject {
 
   update() {
     const ctx = this.gameArea.context;
+    const a = 2 * Math.PI / 6;
+    const r = 10;
+
+    function drawHexagon(r, color, thickness) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      for (var i = 0; i < 6; i++) {
+        ctx.lineTo(r * Math.cos(a * i), r * Math.sin(a * i));
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
+
 
     // Clear last rectangle
     if (this.lastCoordinates) {
@@ -18,15 +32,28 @@ class Snake extends GameObject {
       ctx.translate(this.lastCoordinates.x, this.lastCoordinates.y);
       ctx.rotate(this.lastCoordinates.angle);
       ctx.fillStyle = this.gameArea.canvas.backgroundColor;
-      ctx.fillRect(Math.round(this.width / -2) - 1, Math.round(this.height / -2) - 1, this.width + 2, this.height + 2);
+      drawHexagon(r, "#000");
+      drawHexagon(r - 1, "#000");
+      drawHexagon(r + 1, "#000");
+      drawHexagon(r + 2, "#000");
+      drawHexagon(r - 2, "#000");
+      drawHexagon(r + 3, "#000");
+      drawHexagon(r - 3, "#000");
+      // ctx.fillRect(Math.round(this.width / -2) - 1, Math.round(this.height / -2) - 1, this.width + 2, this.height + 2);
       ctx.restore();
     }
 
+
+
+    // drawHexagon(r, r);
+
     ctx.save();
     ctx.translate(this.x, this.y);
-    ctx.rotate(this.angle);
-    ctx.fillStyle = 'black';
-    ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);
+    ctx.rotate(this.angle + 10);
+    // ctx.fillStyle = 'green';
+    drawHexagon(r, "#f00");
+    // ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);
+
     ctx.restore();
   }
 
