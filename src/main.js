@@ -177,10 +177,6 @@ function main() {
   gameAreaInstance.snake = snakeInstance;
 
   gameAreaInstance.start();
-
-  window.gameArea = gameAreaInstance;
-
-  document.querySelector('#stop', addEventListener('click', function() { gameAreaInstance.stop()}))
 }
 
 window.addEventListener('DOMContentLoaded', main);
